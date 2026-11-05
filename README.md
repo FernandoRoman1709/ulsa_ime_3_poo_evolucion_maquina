@@ -7,24 +7,22 @@ Llena cada espacio conforme avances en las fases de [PRACTICA.md](PRACTICA.md).
 ## Fase 1. Entender el problema
 
 **1.1 El problema con mis propias palabras**
-
-[Inserta aquí tu respuesta]
+El problema en si es que la maquina solo da las bases para el funcionamiento de cada  maquina torno,fresadora,  pulidora, pero esta tabien podria hacer  o mantener una herencia sobre que debe o puede aceptar una maquina lo cual se busca implementarse en  maquina para que en todas se pueda respetar .
 
 **1.2 Reglas que siempre deben cumplirse en una máquina** (escribe al menos tres)
 
-1. _____
-2. _____
-3. _____
+1. Debe estar  encendida____
+2. Debe  esar fuera de mantenimiento____
+3. Atributos  como tiempo deben ser siempre positivos mayor a 0____
 
 **1.3 ¿Quién más usa la clase `Maquina`? ¿Qué podría salir mal si otro equipo crea una máquina nueva sin conocer tus reglas?**
 
-[Inserta aquí tu respuesta]
+Puede ser utilizada como  control de linea la cual incializa  todo el proceso  y podria salir mal que podrian modificar  atributos protegidos creado problemas en sintaxis o problemas  en valores, podria repetirse codigo , y incluso generar    malos   resultados a lo esperado 
 
 ## Fase 2. Diseñar la solución
 
 **2.1 Diagrama inicial (Etapa 0)**
 
-![Diagrama inicial](diseno_inicial.png)
 
 **2.2 Diagrama final (Etapa 9)**
 

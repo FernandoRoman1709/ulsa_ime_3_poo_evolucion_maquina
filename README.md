@@ -22,11 +22,11 @@ Puede ser utilizada como  control de linea la cual incializa  todo el proceso  y
 ## Fase 2. Diseñar la solución
 
 **2.1 Diagrama inicial (Etapa 0)**
-
+![alt text](<Captura de pantalla 2026-11-04 223828.png>)
 
 **2.2 Diagrama final (Etapa 9)**
 
-![Diagrama final](diseno_solucion.png)
+
 
 **2.3 ¿Qué cambió entre los dos diagramas?**
 

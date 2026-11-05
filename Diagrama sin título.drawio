@@ -1,0 +1,89 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="z5rs2FFr7KOv141on37w">
+    <mxGraphModel dx="1261" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" mermaidData="{&#xa;  &quot;data&quot;: &quot;classDiagram\n    class Maquina {\n        +String nombre\n        +int piezasProcesadas\n        +int tiempoTrabajadoSeg\n        +Maquina(String nombre)\n        +procesar() void\n        +mostrarEstado() void\n    }\n\n    class Torno {\n        +Torno(String nombre)\n        +procesar() void\n    }\n\n    class Fresadora {\n        +Fresadora(String nombre)\n        +procesar() void\n    }\n\n    Maquina &lt;|-- Torno\n    Maquina &lt;|-- Fresadora&quot;,&#xa;  &quot;config&quot;: null,&#xa;  &quot;version&quot;: &quot;12&quot;&#xa;}" id="p2EecMOrgluJllVvwrPs-1">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;b&gt;Maquina&lt;/b&gt;" mermaidId="n:Maquina" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=45;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FDF4FF;whiteSpace=wrap;fillColor=#FDF4FF;strokeColor=#E879F9;fontColor=#28253D;fontFamily=Recursive;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;Maquina&lt;/b&gt;" id="p2EecMOrgluJllVvwrPs-2">
+          <mxCell parent="p2EecMOrgluJllVvwrPs-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=45;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FDF4FF;whiteSpace=wrap;fillColor=#FDF4FF;strokeColor=#E879F9;fontColor=#28253D;fontFamily=Recursive;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" vertex="1">
+            <mxGeometry height="219" width="196" x="222" y="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="p2EecMOrgluJllVvwrPs-3" parent="p2EecMOrgluJllVvwrPs-2" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+String nombre" vertex="1">
+          <mxGeometry height="21" width="196" y="57" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-4" parent="p2EecMOrgluJllVvwrPs-2" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+int piezasProcesadas" vertex="1">
+          <mxGeometry height="21" width="196" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-5" parent="p2EecMOrgluJllVvwrPs-2" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+int tiempoTrabajadoSeg" vertex="1">
+          <mxGeometry height="21" width="196" y="99" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-6" parent="p2EecMOrgluJllVvwrPs-2" style="line;strokeWidth=2;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=inherit;" vertex="1">
+          <mxGeometry height="24" width="196" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-7" parent="p2EecMOrgluJllVvwrPs-2" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+Maquina(String nombre)" vertex="1">
+          <mxGeometry height="21" width="196" y="144" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-8" parent="p2EecMOrgluJllVvwrPs-2" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+procesar() void" vertex="1">
+          <mxGeometry height="21" width="196" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-9" parent="p2EecMOrgluJllVvwrPs-2" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+mostrarEstado() void" vertex="1">
+          <mxGeometry height="21" width="196" y="186" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;Torno&lt;/b&gt;" mermaidId="n:Torno" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=45;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#F0FDFA;whiteSpace=wrap;fillColor=#F0FDFA;strokeColor=#2DD4BF;fontColor=#28253D;fontFamily=Recursive;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;Torno&lt;/b&gt;" id="p2EecMOrgluJllVvwrPs-10">
+          <mxCell parent="p2EecMOrgluJllVvwrPs-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=45;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#F0FDFA;whiteSpace=wrap;fillColor=#F0FDFA;strokeColor=#2DD4BF;fontColor=#28253D;fontFamily=Recursive;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" vertex="1">
+            <mxGeometry height="135" width="172" x="120" y="299" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="p2EecMOrgluJllVvwrPs-11" parent="p2EecMOrgluJllVvwrPs-10" style="line;strokeWidth=2;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=inherit;" vertex="1">
+          <mxGeometry height="24" width="172" y="57" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-12" parent="p2EecMOrgluJllVvwrPs-10" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+Torno(String nombre)" vertex="1">
+          <mxGeometry height="21" width="172" y="81" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-13" parent="p2EecMOrgluJllVvwrPs-10" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+procesar() void" vertex="1">
+          <mxGeometry height="21" width="172" y="102" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;Fresadora&lt;/b&gt;" mermaidId="n:Fresadora" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=45;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FFF7ED;whiteSpace=wrap;fillColor=#FFF7ED;strokeColor=#FB923C;fontColor=#28253D;fontFamily=Recursive;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;Fresadora&lt;/b&gt;" id="p2EecMOrgluJllVvwrPs-14">
+          <mxCell parent="p2EecMOrgluJllVvwrPs-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=45;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FFF7ED;whiteSpace=wrap;fillColor=#FFF7ED;strokeColor=#FB923C;fontColor=#28253D;fontFamily=Recursive;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" vertex="1">
+            <mxGeometry height="135" width="205" x="332" y="299" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="p2EecMOrgluJllVvwrPs-15" parent="p2EecMOrgluJllVvwrPs-14" style="line;strokeWidth=2;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=inherit;" vertex="1">
+          <mxGeometry height="24" width="205" y="57" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-16" parent="p2EecMOrgluJllVvwrPs-14" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+Fresadora(String nombre)" vertex="1">
+          <mxGeometry height="21" width="205" y="81" as="geometry" />
+        </mxCell>
+        <mxCell id="p2EecMOrgluJllVvwrPs-17" parent="p2EecMOrgluJllVvwrPs-14" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Recursive;fontColor=#28253D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRecursive;" value="+procesar() void" vertex="1">
+          <mxGeometry height="21" width="205" y="102" as="geometry" />
+        </mxCell>
+        <UserObject label="" mermaidId="e:Maquina-&gt;Torno#0" mermaidBaseStyle="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;startArrow=block;startSize=8;startFill=0;endArrow=none;jumpStyle=arc;jumpSize=12;strokeColor=#000000;exitX=0.35;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;sourcePerimeterSpacing=9.25;" mermaidBaseValue="" id="p2EecMOrgluJllVvwrPs-18">
+          <mxCell edge="1" parent="p2EecMOrgluJllVvwrPs-1" source="p2EecMOrgluJllVvwrPs-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;startArrow=block;startSize=8;startFill=0;endArrow=none;jumpStyle=arc;jumpSize=12;strokeColor=#000000;exitX=0.35;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;sourcePerimeterSpacing=9.25;" target="p2EecMOrgluJllVvwrPs-10">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="290" y="279" />
+                <mxPoint x="206" y="279" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Maquina-&gt;Fresadora#0" mermaidBaseStyle="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;startArrow=block;startSize=8;startFill=0;endArrow=none;jumpStyle=arc;jumpSize=12;strokeColor=#000000;exitX=0.65;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;sourcePerimeterSpacing=9.25;" mermaidBaseValue="" id="p2EecMOrgluJllVvwrPs-19">
+          <mxCell edge="1" parent="p2EecMOrgluJllVvwrPs-1" source="p2EecMOrgluJllVvwrPs-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;startArrow=block;startSize=8;startFill=0;endArrow=none;jumpStyle=arc;jumpSize=12;strokeColor=#000000;exitX=0.65;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;sourcePerimeterSpacing=9.25;" target="p2EecMOrgluJllVvwrPs-14">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="349" y="279" />
+                <mxPoint x="434" y="279" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

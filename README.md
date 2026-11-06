@@ -48,21 +48,22 @@ Puede ser utilizada como  control de linea la cual incializa  todo el proceso  y
 
 a) ¿Qué imprime `ejecutarTurno()` para el torno y la fresadora? ¿Por qué no imprime "torneando" ni "fresando"?
 
-[Inserta aquí tu respuesta]
+Porque la función ejecutarTurno recibe las máquinas como Maquina en general, y como no le pusimos la palabra clave virtual al método procesar(), C++ "no se da cuenta" de qué tipo de máquina es en realidad (si es torno o fresadora).
 
 b) ¿Por qué el torno acumula 65 s y no 135 s?
 
-[Inserta aquí tu respuesta]
+Por que al hacer el primer  ciclo se genera de manera correcta el ttiempo esperado de  torno  perro al hacer el segundo ciclo  hace el  tiempo trabajado seg  al  ejecutar ´rocesar por segunda vez 45+10+10=65
 
 **3.1 Etapa 1. Invariantes y constructores explicit**
 
 a) ¿Qué regla de la sección 1.2 rompió `torno.piezasProcesadas = -5;`?
 
-[Inserta aquí tu respuesta]
+El admitir  valores en los atributos negativos por lo que se buscaria es poner 0
 
 b) ¿De dónde salió la máquina "Fantasma"? ¿Qué hizo el compilador sin que se lo pidieras?
 
-[Inserta aquí tu respuesta]
+std::string codigo = "Fantasma";
+imprimirFicha(codigo);  en el main esta ubicado
 
 c) ¿Qué tuviste que cambiar en `Torno` y `Fresadora` y por qué?
 

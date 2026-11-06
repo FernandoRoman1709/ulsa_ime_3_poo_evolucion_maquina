@@ -5,7 +5,6 @@ Maquina::Maquina(const std::string& nombre)
     : nombre(nombre), piezasProcesadas(0), tiempoTrabajadoSeg(0) {}
 
 Maquina::~Maquina() {
-    // Imprime un mensaje informativo para comprobar la liberación de memoria en tiempo de ejecución
     std::cout << "[Destruyendo Maquina]: " << nombre << "\n";
 }
 
@@ -19,18 +18,8 @@ void Maquina::agregarTiempo(int segundos) {
     }
 }
 
-int Maquina::tiempoCicloSeg() const {
-    return 10;
-}
-
 double Maquina::capacidadPorHora() const {
     return 3600.0 / tiempoCicloSeg();
-}
-
-void Maquina::procesar() {
-    std::cout << nombre << ": procesamiento generico\n";
-    registrarPieza();
-    agregarTiempo(tiempoCicloSeg());
 }
 
 const std::string& Maquina::getNombre() const {
@@ -46,7 +35,7 @@ int Maquina::getTiempoTrabajadoSeg() const {
 }
 
 void Maquina::mostrarEstado() const {
-    std::cout << nombre << " | Piezas: " << piezasProcesadas
-              << " | Tiempo: " << tiempoTrabajadoSeg << "s"
-              << " | Capacidad: " << capacidadPorHora() << " pzas/h\n";
+    std::cout << nombre << " | piezas: " << piezasProcesadas
+              << " | tiempo: " << tiempoTrabajadoSeg << " s"
+              << " | capacidad: " << capacidadPorHora() << " pzas/h\n";
 }

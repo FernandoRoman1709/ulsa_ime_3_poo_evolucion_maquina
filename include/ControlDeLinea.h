@@ -4,6 +4,8 @@
 #include "Maquina.h"
 #include <vector>
 
+namespace planta {
+
 class ControlDeLinea {
 private:
     std::vector<Maquina*> maquinas;
@@ -16,5 +18,7 @@ public:
     void ejecutarTurno(int ciclos);
     void imprimirReporte() const;
 };
+
+}
 
 #endif

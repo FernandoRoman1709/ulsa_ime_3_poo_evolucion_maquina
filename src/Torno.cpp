@@ -1,13 +1,18 @@
-
+// src/Torno.cpp
 #include "Torno.h"
 #include <iostream>
 
-Torno::Torno(const std::string& nombre) : Maquina(nombre) {}
+namespace planta {
+
+Torno::Torno(const std::string& nombre) : Maquina(nombre), husillo(3000.0) {}
 
 int Torno::tiempoCicloSeg() const {
     return 45;
 }
 
 void Torno::ejecutarCiclo() {
-    std::cout << getNombre() << ": torneando pieza\n";
+    husillo.fijarVelocidad(1200.0);
+    std::cout << getNombre() << ": torneando pieza a " << husillo.getVelocidad() << " rpm\n";
 }
+
+}  

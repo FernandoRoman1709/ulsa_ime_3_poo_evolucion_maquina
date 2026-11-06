@@ -1,5 +1,7 @@
 #include "Motor.h"
 
+namespace planta {
+
 Motor::Motor(double velMax) : velocidadRpm(0.0), velocidadMaxRpm(velMax) {}
 
 void Motor::fijarVelocidad(double rpm) {
@@ -11,3 +13,5 @@ void Motor::fijarVelocidad(double rpm) {
 double Motor::getVelocidad() const {
     return velocidadRpm;
 }
+
+}  

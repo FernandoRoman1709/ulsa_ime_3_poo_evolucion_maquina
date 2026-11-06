@@ -1,5 +1,8 @@
+
 #include "InspeccionVisual.h"
 #include <iostream>
+
+namespace planta {
 
 InspeccionVisual::InspeccionVisual(const std::string& nombre) : Maquina(nombre) {}
 
@@ -10,3 +13,5 @@ int InspeccionVisual::tiempoCicloSeg() const {
 void InspeccionVisual::ejecutarCiclo() {
     std::cout << getNombre() << ": inspeccionando pieza con camara\n";
 }
+
+} 

@@ -1,7 +1,10 @@
+
 #ifndef PULIDORA_H
 #define PULIDORA_H
 
 #include "Maquina.h"
+
+namespace planta {
 
 class Pulidora : public Maquina {
 private:
@@ -11,5 +14,7 @@ public:
     explicit Pulidora(const std::string& nombre);
     int tiempoCicloSeg() const override;
 };
+
+}  
 
 #endif

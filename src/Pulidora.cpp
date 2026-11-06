@@ -1,5 +1,8 @@
+
 #include "Pulidora.h"
 #include <iostream>
+
+namespace planta {
 
 Pulidora::Pulidora(const std::string& nombre) : Maquina(nombre) {}
 
@@ -10,3 +13,5 @@ int Pulidora::tiempoCicloSeg() const {
 void Pulidora::ejecutarCiclo() {
     std::cout << getNombre() << ": puliendo pieza\n";
 }
+
+}  

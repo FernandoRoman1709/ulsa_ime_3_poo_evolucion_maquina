@@ -4,18 +4,20 @@
 #include "Pulidora.h"
 #include "InspeccionVisual.h"
 #include "BandaTransportadora.h"
+#include "Cortadora.h"
 #include <iostream>
 #include <exception>
 
 int main() {
     try {
-        ControlDeLinea linea;
+        planta::ControlDeLinea linea;
 
-        linea.agregar(new Torno("Torno T-01"));
-        linea.agregar(new Fresadora("Fresadora F-01"));
-        linea.agregar(new Pulidora("Pulidora P-01"));
-        linea.agregar(new InspeccionVisual("Inspeccion I-01"));
-        linea.agregar(new BandaTransportadora("Banda B-01"));
+        linea.agregar(new planta::Torno("Torno T-01"));
+        linea.agregar(new planta::Fresadora("Fresadora F-01"));
+        linea.agregar(new planta::Pulidora("Pulidora P-01"));
+        linea.agregar(new planta::InspeccionVisual("Inspeccion I-01"));
+        linea.agregar(new planta::BandaTransportadora("Banda B-01"));
+        linea.agregar(new planta::Cortadora("Cortadora C-01"));
 
         linea.ejecutarTurno(2);
 

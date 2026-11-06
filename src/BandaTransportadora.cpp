@@ -1,5 +1,8 @@
+
 #include "BandaTransportadora.h"
 #include <iostream>
+
+namespace planta {
 
 BandaTransportadora::BandaTransportadora(const std::string& nombre)
     : Maquina(nombre), motor(1800.0) {}
@@ -12,3 +15,5 @@ void BandaTransportadora::ejecutarCiclo() {
     motor.fijarVelocidad(900.0);
     std::cout << getNombre() << ": moviendo pieza a " << motor.getVelocidad() << " rpm\n";
 }
+
+}  

@@ -1,20 +1,22 @@
+
 #ifndef BANDATRANSPORTADORA_H
 #define BANDATRANSPORTADORA_H
 
 #include "Maquina.h"
 #include "Motor.h"
 
+namespace planta {
+
 class BandaTransportadora : public Maquina {
 private:
-    Motor motor; // Composición: la banda TIENE UN motor
-
+    Motor motor;
     void ejecutarCiclo() override;
 
 public:
     explicit BandaTransportadora(const std::string& nombre);
-    ~BandaTransportadora() override = default;
-
     int tiempoCicloSeg() const override;
 };
+
+}  
 
 #endif

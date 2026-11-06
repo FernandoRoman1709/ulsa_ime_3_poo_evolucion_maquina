@@ -27,20 +27,20 @@ Puede ser utilizada como  control de linea la cual incializa  todo el proceso  y
 
 **2.2 Diagrama final (Etapa 9)**
 
-
+![alt text](diagrama.jpeg)
 
 **2.3 ¿Qué cambió entre los dos diagramas?**
 
 | Elemento | Etapa 0 | Etapa 9 | Etapa que lo cambió |
 | --- | --- | --- | --- |
-| Visibilidad de los atributos de `Maquina` | _____ | _____ | _____ |
-| `procesar()` | _____ | _____ | _____ |
-| `tiempoCicloSeg()` | _____ | _____ | _____ |
-| Destructor de `Maquina` | _____ | _____ | _____ |
-| ¿Se pueden crear objetos `Maquina`? | _____ | _____ | _____ |
-| Relación `ControlDeLinea` - `Maquina` | _____ | _____ | _____ |
-| Relación `Torno` - `Motor` | _____ | _____ | _____ |
-| Relación `BandaTransportadora` - `Motor` | _____ | _____ | _____ |
+| Visibilidad de los atributos de `Maquina` | ___si__ | __si___ | __1___ |
+| `procesar()` | ___si__ | __si___ | _7____ |
+| `tiempoCicloSeg()` | _si____ | __si___ | __5___ |
+| Destructor de `Maquina` | ____no_ | __si___ | __2___ |
+| ¿Se pueden crear objetos `Maquina`? | ____no_ | ___si__ | __5___ |
+| Relación `ControlDeLinea` - `Maquina` | __no__ | __s___ | __3___ |
+| Relación `Torno` - `Motor` | __no___ | ___si__ | _8____ |
+| Relación `BandaTransportadora` - `Motor` | __no ___ | _si____ | __8___ |
 
 ## Fase 3. Implementar
 
@@ -85,96 +85,112 @@ al poner override  ejecutaba un codigo que imppedia que se usaran metodos distin
 
 a) ¿Por qué la línea procesó todo como "generico" si `procesar()` ya es virtual?
 
-[Inserta aquí tu respuesta]
+Porque el contenedor almacenaba objetos por valor (std::vector<Maquina>). Al agregar objetos de clases derivadas como Torno o Fresadora, se produjo el fenómeno de object slicing (rebanado de objetos): la parte derivada se descartó y solo se copió la rebanada correspondiente a la clase base
 
 b) ¿Por qué el torno y la fresadora originales quedaron con 0 piezas?
 
-[Inserta aquí tu respuesta]
+Porque al pasarlos por valor a linea.agregar(), el vector guardó copias independientes de los objetos. Las modificaciones de las piezas y tiempos ocurrieron sobre las copias internas del vector durante el turno
 
 c) La relación entre `ControlDeLinea` y `Maquina`, ¿es composición o agregación? ¿Por qué?
 
-[Inserta aquí tu respuesta]
+Es agregación. Las máquinas existen independientemente de la línea de producción (son creadas fuera o pasadas a la línea), y el control de línea únicamente mantiene
 
 **3.4 Etapa 4. Destructores**
 
 | Momento | Mensajes de destrucción que aparecieron |
 | --- | --- |
-| `delete temporal;` sin destructor virtual | _____ |
-| `delete temporal;` con destructor virtual | _____ |
-| Al terminar `main` (torno y fresadora) | _____ |
+| `delete temporal;` sin destructor virtual | __[Destruyendo Maquina]: Temporal (Únicamente invoca el destructor de la base; no llama al de la derivada).___ |
+| `delete temporal;` con destructor virtual | __[Destruyendo Torno] seguido de [Destruyendo Maquina]: Temporal (Llama la cadena completa de destrucción).___ |
+| Al terminar `main` (torno y fresadora) | [Destruyendo Fresadora], [Destruyendo Maquina], [Destruyendo Torno], [Destruyendo Maquina] (Destrucción automática por alcance en el stack)._____ |
 
 a) ¿Qué advertencia mostró el compilador? ¿Por qué decimos que ya te estaba avisando del problema?
 
-[Inserta aquí tu respuesta]
+Mostró -Wdelete-non-virtual-dtor (deleting object of polymorphic class type which has non-virtual destructor). Avisaba que al hacer delete sobre un puntero a la clase base Maquina* cuya clase tiene métodos virtuales pero no un destructor virtual
 
 b) ¿Por qué el torno de `main` sí se destruyó completo aunque el destructor no fuera virtual? ¿A qué máquina corresponde el primer "Destruyendo Maquina" después de "Fin de main"?
 
-[Inserta aquí tu respuesta]
+Porque las variables locales en el stack conocen su tipo exacto en tiempo de compilación (Torno), por lo que el compilador invoca directamente el destructor de Torno y luego el de Maquina por herencia sin requerir despacho dinámico.
 
 **3.5 Etapa 5. La clase abstracta**
 
 a) Copia los mensajes de error y explica con tus palabras qué dice cada uno.
 
-[Inserta aquí tu respuesta]
+src/main.cpp: error: cannot declare variable 'pulidora' to be of abstract type 'Pulidora'
+note: because the following virtual functions are pure within 'Pulidora':
+note: 'virtual void Maquina::procesar()'
+
+Pulidora heredó de Maquina pero olvidó implementar el método virtual puro procesar(), lo que convierte automáticamente a Pulidora en una clase abstract
+
 
 b) ¿Por qué es mejor este error de compilación que el comportamiento "generico" de antes?
 
-[Inserta aquí tu respuesta]
+src/main.cpp: error: cannot declare variable 'generica' to be of abstract type 'Maquina'
+note: because the following virtual functions are pure within 'Maquina':
+note: 'virtual void Maquina::procesar()'
+note: 'virtual int Maquina::tiempoCicloSeg() const'
+
+Intenta instanciar directamente la clase base Maquina, pero como contiene funciones virtuales puros (= 0), es una clase abstracta pura y C++ prohíbe crear objetos de ella.
 
 **3.6 Etapa 6. El contrato que el compilador no ve**
 
 a) ¿Qué partes del contrato violó `InspeccionVisual`?
 
-[Inserta aquí tu respuesta]
+Violó el contrato de tiempoCicloSeg() al devolver 0 (debe ser mayor que cero) y el contrato de procesar() al no invocar registrarPieza() ni agregarTiempo().
 
 b) ¿Por qué el compilador no lo detectó?
 
-[Inserta aquí tu respuesta]
+Porque el compilador solo valida la sintaxis y las firmas (nombre del método, parámetros, tipo de retorno y cualificadores const/override), pero no comprende la semántica o lógica de negocio interna implementada en el cuerpo de la función.
 
 c) ¿Qué pasaría si el próximo equipo tampoco lee el comentario del contrato?
-
-[Inserta aquí tu respuesta]
+El programa volvería a compilar sin advertencias, pero generaría reportes inconsistentes o errores silenciosos en producción
 
 **3.7 Etapa 7. La base hace cumplir el contrato**
 
 a) ¿Cómo puede una clase derivada sobrescribir un método que es privado en la base?
 
-[Inserta aquí tu respuesta]
+Porque en C++ la visibilidad (private/public) y el despacho dinámico (virtual) son totalmente independientes.
 
 b) ¿Qué ocurre ahora con una máquina cuyo tiempo de ciclo es 0? Compáralo con la Etapa 6.
 
-[Inserta aquí tu respuesta]
+En la Etapa 6: El programa continuaba ejecutándose y producía reportes con capacidad inf (infinito).
 
-c) ¿Por qué la línea ignoró el "atajo" del torno, pero la llamada directa no? ¿Cómo corregiste el diseño?
+En la Etapa 7: El método centralizado tiempoCicloValidado() intercepta el error en tiempo de ejecución y lanza inmediatamente una excepción std::logic_error, deteniendo el programa con un mensaje claro.
 
-[Inserta aquí tu respuesta]
+c) ¿Por qué la línea ignoró el "atajo" del torno, pero la llamada directa no? ¿Cómo corregiste el diseño
+Llamada directa: Al invocar desde un objeto de tipo Torno, se ejecutó el método procesar() de Torno, el cual ocultó (hiding) al de la clase base.
 
+Desde la línea: Al estar guardado como Maquina*, el compilador resolvió la llamada no virtual procesar() directamente en el tipo estático Maquina, ejecutando el contrato de la base.
+
+Se eliminó la redefinición no virtual de procesar() en Torno, dejando que únicamente la base
 **3.8 Etapa 8. Herencia mal usada**
 
 a) Da al menos dos razones por las que `BandaTransportadora : public Motor` es un error de diseño.
 
-[Inserta aquí tu respuesta]
+Violación de la relación "Es-Un": Una banda transportadora no es un motor; la banda dejó de ser una Maquina, por lo que no puede ser agregada al ControlDeLinea
+
+Exposición indeseada (Rompimiento de Encapsulamiento): Al heredar de forma pública, la banda expone métodos internos de Motor
+
 
 b) La relación entre `BandaTransportadora` y `Motor`, ¿es composición o agregación? ¿Por qué?
 
-[Inserta aquí tu respuesta]
+Es composición. El Motor es un atributo privado de la BandaTransportadora; su ciclo de vida está completamente acoplado al de la banda (se crea y destruye junto con ella).
 
 **3.9 Etapa 9. La librería y la prueba final**
 
 a) Después de agregar la `Cortadora`, ¿qué archivos mostró `git status`? ¿Cuántos archivos de la librería tuviste que modificar?
 
-[Inserta aquí tu respuesta]
+Archivos en git status: Modificado src/main.cpp, y no rastreados include/Cortadora.h y src/Cortadora.cpp.
 
 b) ¿Qué pasó al escribir `-lplanta` antes de `src/main.cpp`? ¿Por qué?
 
-[Inserta aquí tu respuesta]
+Ocurrieron errores de enlazado (undefined reference). Sucedió porque el enlazador (linker) procesa las dependencias de izquierda a derecha.
 
 **3.10 Bitácora de dudas**
 
 | # | Etapa | Duda | Cómo la resolví | Fuente |
 | --- | --- | --- | --- | --- |
-| 1 | _____ | _____ | _____ | _____ |
-| 2 | _____ | _____ | _____ | _____ |
+| 1 | __3___ | __¿Por qué std::vector<Maquina> perdía los datos de las derivadas?___ | __Entendiendo el concepto de object slicing al almacenar por valor.___ | _Guía teórica C++____ |
+| 2 | _9____ | ___¿Por qué afectaba el orden de -lplanta en g++?__ | ___Estudiando el comportamiento del enlazador de GCC de izquierda a derecha.__ | ____Manual GCC / Linker Rules_ |
 | 3 | _____ | _____ | _____ | _____ |
 
 ## Fase 4. Probar y mejorar
@@ -192,7 +208,7 @@ b) ¿Qué pasó al escribir `-lplanta` antes de `src/main.cpp`? ¿Por qué?
 | 7 | Máquina con `tiempoCicloSeg()` igual a 0 | Excepción con mensaje claro | _____ | _____ |
 | 8 | Máquina con `tiempoCicloSeg()` negativo | Excepción con mensaje claro | _____ | _____ |
 | 9 | La misma máquina agregada dos veces | _____ | _____ | _____ |
-
+todaas bien
 **4.2 Bitácora de mejoras**
 
 | # | Falla o mejora detectada | Qué cambié | Por qué |
@@ -206,7 +222,7 @@ Retos opcionales que intenté: _____
 
 **5.1 Enlace a mi fork**
 
-[Inserta aquí el enlace a tu fork]
+https://github.com/FernandoRoman1709/ulsa_ime_3_poo_evolucion_maquina
 
 ## Cierre y reflexión
 
@@ -214,23 +230,29 @@ Retos opcionales que intenté: _____
 
 | Error | Etapa en que apareció | Restricción que lo impide ahora | ¿Quién lo detecta: el compilador o el programa? |
 | --- | --- | --- | --- |
-| Contadores con valores inválidos | _____ | _____ | _____ |
-| Máquina "fantasma" creada a escondidas | _____ | _____ | _____ |
-| Método que no sobrescribe por un `const` | _____ | _____ | _____ |
-| Máquinas copiadas y "rebanadas" | _____ | _____ | _____ |
-| Destrucción incompleta | _____ | _____ | _____ |
-| Máquina sin `procesar()` propio | _____ | _____ | _____ |
-| Tiempo de ciclo inválido | _____ | _____ | _____ |
-| Derivada que no registra sus piezas | _____ | _____ | _____ |
+| Contadores con valores inválidos | 1 | _Atributos private e invariantes en setters/métodos de la base.____ | ____El programa_ |
+| Máquina "fantasma" creada a escondidas | _1____ | Constructores con la palabra clave explicit._____ | __compilador___ |
+| Método que no sobrescribe por un `const` | ___2__ | ___Uso de la palabra clave override.__ | __compilador___ |
+| Máquinas copiadas y "rebanadas" | ____3_ | _Uso de colecciones con punteros (std::vector<Maquina*>) y clases abstractas.____ | _compilador___ |
+| Destrucción incompleta | ___4__ | ___Destructor virtual ~Maquina() en la clase base.__ | __El compilador / El programa___ |
+| Máquina sin `procesar()` propio | ___5__ | __Métodos virtuales puros (= 0) en la clase abstracta.___ | __El compilador / El programa___ |
+| Tiempo de ciclo inválido | ___7__ | __Método tiempoCicloValidado() centralizado en la base.___ | ____l programa_ |
+| Derivada que no registra sus piezas | _7____ | ___Patrón NVI: procesar() no es virtual y la base controla el ciclo__ | __l programa___ |
 
 **6.2 ¿Cuál de los errores fue el más peligroso: el de compilación, la advertencia o el que compilaba sin problemas? ¿Por qué?**
 
-[Inserta aquí tu respuesta]
+fue el que compilaba sin problemas (fallo silencioso en tiempo de ejecución). Los errores de compilación y las advertencias detienen el desarrollo inmediatamente y señalan la línea exacta a corregir.
 
 **6.3 ¿Qué aprendiste en esta práctica?**
 
-[Inserta aquí tu respuesta]
+El uso del patrón NVI (Non-Virtual Interface) para centralizar contratos y evitar que las clases derivadas salten las reglas de negocio.
+
+La importancia de la destrucción polimórfica polimórfica con destructores virtuales para evitar fugas de memoria.
+
+La diferencia crítica entre herencia ("Es-Un") y composición ("Tiene-Un"), eligiendo siempre la que preserve el encapsulamiento.
 
 **6.4 ¿Qué cambiarías de tu proceso la próxima vez?**
 
-[Inserta aquí tu respuesta]
+Diseñar los contratos antes de escribir código: Definir primero las pre/postcondiciones e invariantes para no asumir comportamientos implícitos en las clases derivadas.
+
+Prestar atención inmediata a los warnings: No ignorar advertencias del compilador, ya que suelen anticipar errores graves de ejecución como destrucciones incompletas o conversiones implícitas.

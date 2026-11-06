@@ -17,10 +17,11 @@ public:
     explicit Maquina(const std::string& nombre);
     virtual ~Maquina();
 
-    virtual void procesar();
-    virtual int tiempoCicloSeg() const;
-    double capacidadPorHora() const;
+    // Métodos virtuales puros: Maquina es una clase abstracta
+    virtual void procesar() = 0;
+    virtual int tiempoCicloSeg() const = 0;
 
+    double capacidadPorHora() const;
     const std::string& getNombre() const;
     int getPiezasProcesadas() const;
     int getTiempoTrabajadoSeg() const;

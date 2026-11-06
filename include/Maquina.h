@@ -15,7 +15,7 @@ protected:
 
 public:
     explicit Maquina(const std::string& nombre);
-    virtual ~Maquina() = default;
+    virtual ~Maquina();
 
     virtual void procesar();
     virtual int tiempoCicloSeg() const;

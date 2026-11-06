@@ -4,6 +4,11 @@
 Maquina::Maquina(const std::string& nombre)
     : nombre(nombre), piezasProcesadas(0), tiempoTrabajadoSeg(0) {}
 
+Maquina::~Maquina() {
+    // Imprime un mensaje informativo para comprobar la liberación de memoria en tiempo de ejecución
+    std::cout << "[Destruyendo Maquina]: " << nombre << "\n";
+}
+
 void Maquina::registrarPieza() {
     piezasProcesadas++;
 }

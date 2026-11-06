@@ -6,6 +6,7 @@
 class Torno : public Maquina {
 public:
     explicit Torno(const std::string& nombre);
+    ~Torno() override = default;
 
     void procesar() override;
     int tiempoCicloSeg() const override;

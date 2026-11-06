@@ -6,6 +6,7 @@
 class Fresadora : public Maquina {
 public:
     explicit Fresadora(const std::string& nombre);
+    ~Fresadora() override = default;
 
     void procesar() override;
     int tiempoCicloSeg() const override;

@@ -7,8 +7,6 @@ int Fresadora::tiempoCicloSeg() const {
     return 60;
 }
 
-void Fresadora::procesar() {
+void Fresadora::ejecutarCiclo() {
     std::cout << getNombre() << ": fresando pieza\n";
-    registrarPieza();
-    agregarTiempo(tiempoCicloSeg());
 }

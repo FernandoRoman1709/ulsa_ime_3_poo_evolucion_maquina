@@ -4,11 +4,11 @@
 #include "Maquina.h"
 
 class Torno : public Maquina {
+private:
+    void ejecutarCiclo() override;
+
 public:
     explicit Torno(const std::string& nombre);
-    ~Torno() override = default;
-
-    void procesar() override;
     int tiempoCicloSeg() const override;
 };
 

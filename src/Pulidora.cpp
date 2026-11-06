@@ -7,8 +7,6 @@ int Pulidora::tiempoCicloSeg() const {
     return 30;
 }
 
-void Pulidora::procesar() {
+void Pulidora::ejecutarCiclo() {
     std::cout << getNombre() << ": puliendo pieza\n";
-    registrarPieza();
-    agregarTiempo(tiempoCicloSeg());
 }

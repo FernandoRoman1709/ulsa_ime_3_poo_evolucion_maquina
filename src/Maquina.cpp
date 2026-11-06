@@ -1,12 +1,9 @@
 #include "Maquina.h"
 #include <iostream>
+#include <stdexcept>
 
 Maquina::Maquina(const std::string& nombre)
     : nombre(nombre), piezasProcesadas(0), tiempoTrabajadoSeg(0) {}
-
-Maquina::~Maquina() {
-    std::cout << "[Destruyendo Maquina]: " << nombre << "\n";
-}
 
 void Maquina::registrarPieza() {
     piezasProcesadas++;
@@ -18,8 +15,23 @@ void Maquina::agregarTiempo(int segundos) {
     }
 }
 
+int Maquina::tiempoCicloValidado() const {
+    int t = tiempoCicloSeg();
+    if (t <= 0) {
+        throw std::logic_error(nombre + ": tiempoCicloSeg() debe ser mayor que cero");
+    }
+    return t;
+}
+
+void Maquina::procesar() {
+    int tiempo = tiempoCicloValidado();
+    ejecutarCiclo();
+    registrarPieza();
+    agregarTiempo(tiempo);
+}
+
 double Maquina::capacidadPorHora() const {
-    return 3600.0 / tiempoCicloSeg();
+    return 3600.0 / tiempoCicloValidado();
 }
 
 const std::string& Maquina::getNombre() const {

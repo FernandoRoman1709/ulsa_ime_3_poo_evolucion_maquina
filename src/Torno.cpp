@@ -1,3 +1,4 @@
+
 #include "Torno.h"
 #include <iostream>
 
@@ -7,8 +8,6 @@ int Torno::tiempoCicloSeg() const {
     return 45;
 }
 
-void Torno::procesar() {
+void Torno::ejecutarCiclo() {
     std::cout << getNombre() << ": torneando pieza\n";
-    registrarPieza();
-    agregarTiempo(tiempoCicloSeg());
 }

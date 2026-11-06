@@ -4,11 +4,11 @@
 #include "Maquina.h"
 
 class Pulidora : public Maquina {
+private:
+    void ejecutarCiclo() override;
+
 public:
     explicit Pulidora(const std::string& nombre);
-    ~Pulidora() override = default;
-
-    void procesar() override;
     int tiempoCicloSeg() const override;
 };
 

@@ -4,11 +4,9 @@
 InspeccionVisual::InspeccionVisual(const std::string& nombre) : Maquina(nombre) {}
 
 int InspeccionVisual::tiempoCicloSeg() const {
-    return 15; // Cumple el contrato: mayor que 0
+    return 15;
 }
 
-void InspeccionVisual::procesar() {
+void InspeccionVisual::ejecutarCiclo() {
     std::cout << getNombre() << ": inspeccionando pieza con camara\n";
-    registrarPieza();                // Cumple el contrato: incrementa piezas
-    agregarTiempo(tiempoCicloSeg()); // Cumple el contrato: suma tiempo de ciclo
 }

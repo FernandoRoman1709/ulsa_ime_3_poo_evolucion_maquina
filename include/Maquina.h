@@ -10,14 +10,16 @@ private:
     int tiempoTrabajadoSeg;
 
 protected:
-    // Solo las clases derivadas avisan a la base lo que ocurrio en un ciclo.
     void registrarPieza();
     void agregarTiempo(int segundos);
 
 public:
     explicit Maquina(const std::string& nombre);
+    virtual ~Maquina() = default;
 
-    void procesar();
+    virtual void procesar();
+    virtual int tiempoCicloSeg() const;
+    double capacidadPorHora() const;
 
     const std::string& getNombre() const;
     int getPiezasProcesadas() const;

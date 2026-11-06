@@ -66,18 +66,20 @@ std::string codigo = "Fantasma";
 imprimirFicha(codigo);  en el main esta ubicado
 
 c) ¿Qué tuviste que cambiar en `Torno` y `Fresadora` y por qué?
+ se cambiaron accesos directos por   metodos que son protegidos, 
 
-[Inserta aquí tu respuesta]
+ Para respetar la encapsulación: En la clase base Maquina, los atributos pasaron a ser private para garantizar sus invariantes (evitar piezas negativas o tiempos inválidos).
 
 **3.2 Etapa 2. Virtual y override**
 
 a) La fresadora acumula 180 s, pero reporta 360 pzas/h. ¿Por qué un cálculo usó 60 s y el otro 10 s?
 
-[Inserta aquí tu respuesta]
+Por qué el tiempo acumulado usó 60 s: Al llamar a fresadora.procesar(), se ejecutó el método de la clase derivada Fresadora. Este método llamó a agregarTiempo(tiempoCicloSeg()) utilizando la versión del propio .cpp de Fresadora, que devuelve 60 segundos por ciclo  
+
+Por qué la capacidad usó 10 s: La función capacidadPorHora() está definida en la clase base Maquina y es un método const (mostrarEstado() también lo es). Dentro de la clase Maquina.
 
 b) ¿Tu compilador mostró alguna advertencia antes de usar `override`? ¿Qué mensaje dio después de agregar `override`?
-
-[Inserta aquí tu respuesta]
+al poner override  ejecutaba un codigo que imppedia que se usaran metodos distintos
 
 **3.3 Etapa 3. La línea de producción**
 
